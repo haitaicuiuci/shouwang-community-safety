@@ -14,5 +14,15 @@
   "unit_tests": 13,
   "local_reproduction": "passed",
   "public_data_check": "passed",
-  "remote_CI": "pending first push"
+  "remote_CI": "See Actions; first run exposed cross-platform drift; follow-up validates state using current experiment and uploads comparison evidence",
+  "public_demo": "https://shouwang-safety-lab-2026.arcane-civet-5667.chatgpt.site",
+  "repository": "https://github.com/haitaicuiuci/shouwang-community-safety",
+  "public_browser": "Chrome loaded real metrics and D02; appeal moved block to review",
+  "cross_platform": {
+    "macOS_f1": 0.765966659,
+    "Ubuntu_f1": 0.7626476487630934,
+    "macOS_review": 1166,
+    "Ubuntu_review": 1168,
+    "root_cause": "not yet isolated"
+  }
 }

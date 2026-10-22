@@ -2,7 +2,7 @@
   "checks": {
     "root_http_200": true,
     "real_dashboard_test_count": true,
-    "queue_1166_no_labels": true,
+    "queue_matches_current_experiment_no_labels": true,
     "text_reveal_endpoint": true,
     "deny_/artifacts/warehouse.sqlite": true,
     "deny_/data/raw/test.csv": true,

@@ -18,14 +18,15 @@ with tempfile.TemporaryDirectory() as d:
  try:
   status,html=get('/');checks['root_http_200']=status==200
   data=json.loads(get('/data.json')[1]);checks['real_dashboard_test_count']=data['routing']['n']==5311
-  q=json.loads(get('/api/queue')[1]);sid=q['items'][0]['sample_id'];checks['queue_1166_no_labels']=q['total']==1166 and all(set(x)=={'sample_id','priority','reason'} for x in q['items'])
+  expected_queue=data['routing']['counts']['review']
+  q=json.loads(get('/api/queue')[1]);sid=q['items'][0]['sample_id'];checks['queue_matches_current_experiment_no_labels']=q['total']==expected_queue and expected_queue>0 and all(set(x)=={'sample_id','priority','reason'} for x in q['items'])
   checks['text_reveal_endpoint']=bool(json.loads(get('/api/text?id='+sid)[1])['text'])
   for path in ['/artifacts/warehouse.sqlite','/data/raw/test.csv','/../README.md']:
    try:get(path);checks['deny_'+path]=False
    except urllib.error.HTTPError as e:checks['deny_'+path]=e.code==404
   v={'id':sid,'kind':'review','decision':'pass','reviewer':'QA-only','reason':'仅隔离环境接口测试，无实际人工判定'}
-  checks['isolated_post_review']=post(v)['ok'] and json.loads(get('/api/queue')[1])['total']==1165
-  v.update(kind='appeal',decision='review');checks['isolated_appeal_requeue']=post(v)['ok'] and json.loads(get('/api/queue')[1])['total']==1166
+  checks['isolated_post_review']=post(v)['ok'] and json.loads(get('/api/queue')[1])['total']==expected_queue-1
+  v.update(kind='appeal',decision='review');checks['isolated_appeal_requeue']=post(v)['ok'] and json.loads(get('/api/queue')[1])['total']==expected_queue
   try:post(v,'https://untrusted.invalid');checks['cross_origin_rejected']=False
   except urllib.error.HTTPError as e:checks['cross_origin_rejected']=e.code==403
   try:

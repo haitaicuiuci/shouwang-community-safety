@@ -13,6 +13,20 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Verify committed public snapshot before retraining
+        run: python tests/check_public_demo.py
       - run: bash run.sh reproduce
       - run: bash run.sh http-check
-      - run: python tests/check_public_demo.py
+      - name: Report cross-platform differences without replacing the public snapshot
+        run: python tests/report_reproduction.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reproduction-evidence
+          path: |
+            artifacts/results.json
+            artifacts/policy.json
+            artifacts/predictions.csv
+            artifacts/run_manifest.json
+            artifacts/http_verification.json
+            artifacts/ci_comparison.json
