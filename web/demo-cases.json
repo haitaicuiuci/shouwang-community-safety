@@ -1,0 +1,117 @@
+{
+  "notice": "全部自编演示用例，与COLD主实验隔离；分数由冻结轻量模型实际离线计算，网页不进行在线推理。",
+  "policy": {
+    "version": "cold-offline-v1",
+    "C": 3.0,
+    "binary_threshold": 0.45,
+    "pass_threshold": 0.28,
+    "block_threshold": 0.72,
+    "selection": "validation F1 for binary; max auto coverage at empirical 95% precision per auto action and >=50 validation support; rules prohibit auto-pass",
+    "validation_target": 0.95,
+    "validation_auto_pass_n": 2677,
+    "validation_auto_pass_precision": 0.9514381770638775,
+    "validation_auto_block_n": 2620,
+    "validation_auto_block_precision": 0.95
+  },
+  "samples": [
+    {
+      "id": "D01",
+      "category": "正常交流",
+      "text": "你说得很清楚，谢谢分享。",
+      "reference_decision": "pass",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.056700496108010076,
+      "rule_hit": false,
+      "route": "pass",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D02",
+      "category": "反偏见表达",
+      "text": "不要歧视男人啊，每个人都值得被平等尊重。",
+      "reference_decision": "pass",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.9620001058192645,
+      "rule_hit": false,
+      "route": "block",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D03",
+      "category": "针对个人的侮辱",
+      "text": "你真是个废物，根本不配和大家讨论。",
+      "reference_decision": "block",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.3363900249398315,
+      "rule_hit": true,
+      "route": "review",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D04",
+      "category": "中性地域询问",
+      "text": "你来自哪个城市？我想了解那里的生活。",
+      "reference_decision": "pass",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.14447960163846826,
+      "rule_hit": false,
+      "route": "pass",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D05",
+      "category": "行为批评",
+      "text": "这个方案缺少证据，我不同意这个结论。",
+      "reference_decision": "pass",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.1692829191619259,
+      "rule_hit": false,
+      "route": "pass",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D06",
+      "category": "隐含贬损",
+      "text": "这种人就是天生低人一等，根本不值得尊重。",
+      "reference_decision": "block",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.7458652147193936,
+      "rule_hit": false,
+      "route": "block",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D07",
+      "category": "引用与反驳",
+      "text": "有人用“废物”攻击别人，这种说法不应该被鼓励。",
+      "reference_decision": "pass",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.7823647595292228,
+      "rule_hit": true,
+      "route": "block",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    },
+    {
+      "id": "D08",
+      "category": "缺少上下文",
+      "text": "你们这种人都一样。",
+      "reference_decision": "review",
+      "reference_note": "演示作者建议结论，不是人工标注真值；不进入任何主实验指标",
+      "score": 0.5657686157367956,
+      "rule_hit": false,
+      "route": "review",
+      "provenance": "synthetic_demo",
+      "inference": "precomputed_actual_lightweight_model"
+    }
+  ],
+  "model_sha256": "8858200f7d44fe33093612e99eff5a6d35afc693314c3c223dcb2f25931169af",
+  "generated_date": "2026-10-22",
+  "experiment_snapshot_sha256": "272e84039d005c15b4aff3905ab651ffee22ad8045a5f052fd2d866f2be9d6b3"
+}

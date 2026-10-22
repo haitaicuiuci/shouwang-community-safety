@@ -1,0 +1,40 @@
+{
+  "dataset": "COLDataset",
+  "repository": "https://github.com/thu-coai/COLDataset",
+  "commit": "a0c55a945497ab58e94aef491180e1cf88ffb864",
+  "download_date": "2026-10-21",
+  "license": "Apache-2.0 (repository root LICENSE)",
+  "archive_sha256": "8d8e4d2807a5eb5350a47ae733aac14fe6a0b24b77ad98da0a7693dbf8beca52",
+  "files": [
+    {
+      "file": "dev.csv",
+      "source_url": "https://raw.githubusercontent.com/thu-coai/COLDataset/a0c55a945497ab58e94aef491180e1cf88ffb864/COLDataset/dev.csv",
+      "bytes": 1016319,
+      "sha256": "28e67a26815aa1852449ba06919e51c07060d146e2bd23101cc0137a0ff94b7c"
+    },
+    {
+      "file": "test.csv",
+      "source_url": "https://raw.githubusercontent.com/thu-coai/COLDataset/a0c55a945497ab58e94aef491180e1cf88ffb864/COLDataset/test.csv",
+      "bytes": 866973,
+      "sha256": "b06d31481f0d558b6dc8140408938abe8dba8083cd9976b4ba8f5c837fbe78ed"
+    },
+    {
+      "file": "train.csv",
+      "source_url": "https://raw.githubusercontent.com/thu-coai/COLDataset/a0c55a945497ab58e94aef491180e1cf88ffb864/COLDataset/train.csv",
+      "bytes": 4131002,
+      "sha256": "16ca7955bdcaf90f5d8ac39e51eb3eda15320caa1e730ed45cb5e8ca8cd0d5e8"
+    },
+    {
+      "file": "LICENSE",
+      "source_url": "https://raw.githubusercontent.com/thu-coai/COLDataset/a0c55a945497ab58e94aef491180e1cf88ffb864/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "file": "README.md",
+      "source_url": "https://raw.githubusercontent.com/thu-coai/COLDataset/a0c55a945497ab58e94aef491180e1cf88ffb864/README.md",
+      "bytes": 1560,
+      "sha256": "c51c606a7181c81cad56d6083481cc6257b9d3848f6b870b38ebc008ab5017d4"
+    }
+  ]
+}

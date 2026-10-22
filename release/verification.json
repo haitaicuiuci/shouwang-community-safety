@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22",
+  "browser_checks": [
+    "real metrics displayed",
+    "D02 score 0.9620 original block",
+    "appeal changed D02 to review and pending count 2 to 3",
+    "human review changed D02 to pass",
+    "original block preserved",
+    "two audit events displayed",
+    "state and events survived reload"
+  ],
+  "test_data": "8 synthetic examples; no contribution to primary metrics",
+  "inference": "precomputed real frozen lightweight model outputs; no live API",
+  "unit_tests": 13,
+  "local_reproduction": "passed",
+  "public_data_check": "passed",
+  "remote_CI": "pending first push"
+}

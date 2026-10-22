@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "root_http_200": true,
+    "real_dashboard_test_count": true,
+    "queue_1166_no_labels": true,
+    "text_reveal_endpoint": true,
+    "deny_/artifacts/warehouse.sqlite": true,
+    "deny_/data/raw/test.csv": true,
+    "deny_/../README.md": true,
+    "isolated_post_review": true,
+    "isolated_appeal_requeue": true,
+    "cross_origin_rejected": true,
+    "host_rejected": true,
+    "actual_human_events_unchanged": true
+  },
+  "all_passed": true,
+  "human_event_test_isolation": "Temporary SQLite deleted after test; no actual human review completed"
+}

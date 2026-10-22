@@ -1,0 +1,43 @@
+{
+  "fine_binary_mismatches": 0,
+  "missing_topic_rows": 0,
+  "text_length_quantiles": {
+    "0": 3.0,
+    "50": 40.0,
+    "95": 110.0,
+    "100": 192.0
+  },
+  "raw_counts": {
+    "train": 25726,
+    "validation": 6431,
+    "test": 5323
+  },
+  "raw_total": 37480,
+  "retained_total": 37245,
+  "retained_counts": {
+    "test": 5311,
+    "validation": 6405,
+    "train": 25529
+  },
+  "invalid_rows": 0,
+  "conflict_groups": 29,
+  "duplicate_rows": 177,
+  "cross_split_groups_before": 105,
+  "cross_split_groups_after": 0,
+  "labels": {
+    "test": {
+      "1": 2105,
+      "0": 3206
+    },
+    "validation": {
+      "1": 3194,
+      "0": 3211
+    },
+    "train": {
+      "1": 12583,
+      "0": 12946
+    }
+  },
+  "normalization": "NFKC+lower+alphanumeric only; test > validation > train; conflicting binary groups removed",
+  "semantic_dedup": false
+}

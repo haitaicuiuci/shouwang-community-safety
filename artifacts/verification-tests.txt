@@ -1,0 +1,18 @@
+test_big_model_adapter_injection_without_truth (test_cascade.Cascade.test_big_model_adapter_injection_without_truth) ... ok
+test_pending_and_rejected_actions (test_operations.Operations.test_pending_and_rejected_actions) ... ok
+test_queue_has_no_truth_or_text (test_operations.Operations.test_queue_has_no_truth_or_text) ... ok
+test_review_appeal_and_recheck (test_operations.Operations.test_review_appeal_and_recheck) ... ok
+test_cache_and_policy_version (test_project.Adapter.test_cache_and_policy_version) ... ok
+test_disabled (test_project.Adapter.test_disabled) ... ok
+test_inconsistent_and_nan (test_project.Adapter.test_inconsistent_and_nan) ... ok
+test_timeout_and_invalid_schema_fail_closed (test_project.Adapter.test_timeout_and_invalid_schema_fail_closed) ... ok
+test_no_leakage_and_accounting (test_project.Integrity.test_no_leakage_and_accounting) ... ok
+test_normalize_redact (test_project.Integrity.test_normalize_redact) ... ok
+test_route_boundaries (test_project.Integrity.test_route_boundaries) ... ok
+test_sources (test_project.Integrity.test_sources) ... ok
+test_truth_is_not_human (test_project.Integrity.test_truth_is_not_human) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.534s
+
+OK

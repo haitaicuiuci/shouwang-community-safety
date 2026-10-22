@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/*.csv
+artifacts/*.sqlite
+artifacts/model.joblib
+artifacts/split_manifest.json
+
+.DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.tar.gz
+node_modules/

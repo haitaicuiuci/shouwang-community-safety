@@ -1,0 +1,9065 @@
+{
+  "dataset": "COLD 中文冒犯评论",
+  "seed": 42,
+  "policy": {
+    "version": "cold-offline-v1",
+    "C": 3.0,
+    "binary_threshold": 0.45,
+    "pass_threshold": 0.28,
+    "block_threshold": 0.72,
+    "selection": "validation F1 for binary; max auto coverage at empirical 95% precision per auto action and >=50 validation support; rules prohibit auto-pass",
+    "validation_target": 0.95,
+    "validation_auto_pass_n": 2677,
+    "validation_auto_pass_precision": 0.9514381770638775,
+    "validation_auto_block_n": 2620,
+    "validation_auto_block_precision": 0.95
+  },
+  "quality": {
+    "fine_binary_mismatches": 0,
+    "missing_topic_rows": 0,
+    "text_length_quantiles": {
+      "0": 3.0,
+      "50": 40.0,
+      "95": 110.0,
+      "100": 192.0
+    },
+    "raw_counts": {
+      "train": 25726,
+      "validation": 6431,
+      "test": 5323
+    },
+    "raw_total": 37480,
+    "retained_total": 37245,
+    "retained_counts": {
+      "test": 5311,
+      "validation": 6405,
+      "train": 25529
+    },
+    "invalid_rows": 0,
+    "conflict_groups": 29,
+    "duplicate_rows": 177,
+    "cross_split_groups_before": 105,
+    "cross_split_groups_after": 0,
+    "labels": {
+      "test": {
+        "1": 2105,
+        "0": 3206
+      },
+      "validation": {
+        "1": 3194,
+        "0": 3211
+      },
+      "train": {
+        "1": 12583,
+        "0": 12946
+      }
+    },
+    "normalization": "NFKC+lower+alphanumeric only; test > validation > train; conflicting binary groups removed",
+    "semantic_dedup": false
+  },
+  "metrics": {
+    "rules": {
+      "n": 5311,
+      "precision": 0.8461538461538461,
+      "recall": 0.031353919239904986,
+      "f1": 0.060467246907924876,
+      "tn": 3194,
+      "fp": 12,
+      "fn": 2039,
+      "tp": 66,
+      "false_positive_rate": 0.0037429819089207735,
+      "false_negative_rate": 0.9686460807600951
+    },
+    "lightweight": {
+      "n": 5311,
+      "precision": 0.7036595067621321,
+      "recall": 0.8403800475059382,
+      "f1": 0.7659666594500975,
+      "tn": 2461,
+      "fp": 745,
+      "fn": 336,
+      "tp": 1769,
+      "false_positive_rate": 0.2323767935121647,
+      "false_negative_rate": 0.15961995249406175
+    },
+    "cascade_auto_only": {
+      "n": 4145,
+      "precision": 0.7711306256860593,
+      "recall": 0.8926302414231257,
+      "f1": 0.8274440518256773,
+      "tn": 2154,
+      "fp": 417,
+      "fn": 169,
+      "tp": 1405,
+      "false_positive_rate": 0.16219369894982497,
+      "false_negative_rate": 0.10736975857687421
+    }
+  },
+  "routing": {
+    "n": 5311,
+    "counts": {
+      "review": 1166,
+      "block": 1822,
+      "pass": 2323
+    },
+    "rates": {
+      "pass": 0.4373940877424214,
+      "block": 0.34306157032573903,
+      "review": 0.21954434193183958
+    },
+    "auto_coverage": 0.7804556580681604,
+    "auto_pass_offensive": 169,
+    "auto_block_safe": 417,
+    "pass_contamination": 0.07275075333620319,
+    "block_precision": 0.7711306256860593,
+    "leakage_over_all_offensive": 0.08028503562945369,
+    "false_block_over_all_safe": 0.1300686213349969,
+    "human_completed": 0,
+    "actual_llm_calls": 0,
+    "candidate_llm_requests": 1166,
+    "final_end_to_end_quality": null,
+    "release_gate": "BLOCKED: test block precision below validation target; offline demo only"
+  },
+  "risk_metrics": [
+    {
+      "n": 288,
+      "precision": null,
+      "recall": 0.8159722222222222,
+      "f1": null,
+      "tn": 0,
+      "fp": 0,
+      "fn": 53,
+      "tp": 235,
+      "false_positive_rate": null,
+      "false_negative_rate": 0.1840277777777778,
+      "risk": "个人攻击",
+      "cascade_pass_offensive": 28,
+      "cascade_block_safe": 0,
+      "review": 61
+    },
+    {
+      "n": 2545,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "tn": 2212,
+      "fp": 333,
+      "fn": 0,
+      "tp": 0,
+      "false_positive_rate": 0.13084479371316307,
+      "false_negative_rate": null,
+      "risk": "其他非冒犯",
+      "cascade_pass_offensive": 0,
+      "cascade_block_safe": 128,
+      "review": 441
+    },
+    {
+      "n": 661,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "tn": 249,
+      "fp": 412,
+      "fn": 0,
+      "tp": 0,
+      "false_positive_rate": 0.6232980332829047,
+      "false_negative_rate": null,
+      "risk": "反偏见表达",
+      "cascade_pass_offensive": 0,
+      "cascade_block_safe": 289,
+      "review": 194
+    },
+    {
+      "n": 1817,
+      "precision": null,
+      "recall": 0.8442487616951018,
+      "f1": null,
+      "tn": 0,
+      "fp": 0,
+      "fn": 283,
+      "tp": 1534,
+      "false_positive_rate": null,
+      "false_negative_rate": 0.15575123830489818,
+      "risk": "群体攻击",
+      "cascade_pass_offensive": 141,
+      "cascade_block_safe": 0,
+      "review": 470
+    }
+  ],
+  "latency": {
+    "method": "200 sequential single-item warm calls; vectorize + classifier + rules + route; perf_counter; one CPU thread; excludes startup, DB, network, human",
+    "n": 200,
+    "p50_ms": 0.2708745887503028,
+    "p95_ms": 0.564438325818628,
+    "batch_total_ms": 272.73112488910556,
+    "batch_amortized_ms": 0.05135212293148288,
+    "actual_llm_latency_ms": null,
+    "actual_end_to_end_latency_ms": null
+  },
+  "lightweight_f1_bootstrap95": [
+    0.7547607138938283,
+    0.7780215385631508
+  ],
+  "cost": {
+    "actual_api_spend": 0,
+    "estimated_scenario_spend": 0.8162,
+    "assumptions": {
+      "input_tokens": 300,
+      "output_tokens": 100,
+      "input_price_per_million": 1.0,
+      "output_price_per_million": 4.0,
+      "currency": "CNY",
+      "note": "仅情景假设，非供应商报价；没有API调用"
+    },
+    "formula": "candidate_requests * (input_tokens * input_price + output_tokens * output_price) / 1e6"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "sklearn": "1.6.1",
+    "numpy": "2.2.6",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "cpu_count": 6,
+    "cpu_threads_used": 1
+  },
+  "duration_seconds": 8.898229542188346,
+  "sql": {
+    "split_distribution": [
+      {
+        "split": "test",
+        "source_label": 0,
+        "n": 3206
+      },
+      {
+        "split": "test",
+        "source_label": 1,
+        "n": 2105
+      },
+      {
+        "split": "train",
+        "source_label": 0,
+        "n": 12946
+      },
+      {
+        "split": "train",
+        "source_label": 1,
+        "n": 12583
+      },
+      {
+        "split": "validation",
+        "source_label": 0,
+        "n": 3211
+      },
+      {
+        "split": "validation",
+        "source_label": 1,
+        "n": 3194
+      }
+    ],
+    "quality_exclusions": [
+      {
+        "reason": "conflicting_label",
+        "n": 58
+      },
+      {
+        "reason": "normalized_duplicate",
+        "n": 177
+      }
+    ],
+    "confusion_matrix": [
+      {
+        "strategy": "lightweight",
+        "truth": 0,
+        "prediction": 0,
+        "n": 2461
+      },
+      {
+        "strategy": "lightweight",
+        "truth": 0,
+        "prediction": 1,
+        "n": 745
+      },
+      {
+        "strategy": "lightweight",
+        "truth": 1,
+        "prediction": 0,
+        "n": 336
+      },
+      {
+        "strategy": "lightweight",
+        "truth": 1,
+        "prediction": 1,
+        "n": 1769
+      },
+      {
+        "strategy": "rules",
+        "truth": 0,
+        "prediction": 0,
+        "n": 3194
+      },
+      {
+        "strategy": "rules",
+        "truth": 0,
+        "prediction": 1,
+        "n": 12
+      },
+      {
+        "strategy": "rules",
+        "truth": 1,
+        "prediction": 0,
+        "n": 2039
+      },
+      {
+        "strategy": "rules",
+        "truth": 1,
+        "prediction": 1,
+        "n": 66
+      }
+    ],
+    "route_coverage": [
+      {
+        "decision": "block",
+        "n": 1822,
+        "share_of_all_test": 0.343062
+      },
+      {
+        "decision": "pass",
+        "n": 2323,
+        "share_of_all_test": 0.437394
+      },
+      {
+        "decision": "review",
+        "n": 1166,
+        "share_of_all_test": 0.219544
+      }
+    ],
+    "risk_errors": [
+      {
+        "policy_risk": "个人攻击",
+        "n": 288,
+        "fn": 53,
+        "fp": 0
+      },
+      {
+        "policy_risk": "其他非冒犯",
+        "n": 2545,
+        "fn": 0,
+        "fp": 333
+      },
+      {
+        "policy_risk": "反偏见表达",
+        "n": 661,
+        "fn": 0,
+        "fp": 412
+      },
+      {
+        "policy_risk": "群体攻击",
+        "n": 1817,
+        "fn": 283,
+        "fp": 0
+      }
+    ],
+    "route_errors": [
+      {
+        "decision": "block",
+        "n": 1822,
+        "labeled_offensive": 1405,
+        "labeled_safe": 417
+      },
+      {
+        "decision": "pass",
+        "n": 2323,
+        "labeled_offensive": 169,
+        "labeled_safe": 2154
+      },
+      {
+        "decision": "review",
+        "n": 1166,
+        "labeled_offensive": 531,
+        "labeled_safe": 635
+      }
+    ],
+    "queue_workload": [
+      {
+        "reason": "rule_conflict",
+        "pending": 6
+      },
+      {
+        "reason": "uncertain",
+        "pending": 1160
+      }
+    ],
+    "cross_split_leakage": [],
+    "topic_errors": [
+      {
+        "topic": "gender",
+        "n": 1548,
+        "fn": 77,
+        "fp": 207
+      },
+      {
+        "topic": "race",
+        "n": 1685,
+        "fn": 102,
+        "fp": 255
+      },
+      {
+        "topic": "region",
+        "n": 2078,
+        "fn": 157,
+        "fp": 283
+      }
+    ]
+  },
+  "errors": [
+    {
+      "id": "cold-test-00005",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7662,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00008",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8323,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00009",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1602,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00039",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1374,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00068",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4577,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00072",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4264,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00076",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4273,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00083",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8099,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00090",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.566,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00095",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3859,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00097",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9047,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00104",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2718,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00126",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.707,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00129",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9324,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00145",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.901,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00150",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2196,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00153",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9649,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00154",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2827,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00157",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0984,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00159",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9658,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00161",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4435,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00163",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.663,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00168",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8818,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00170",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7217,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00172",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6948,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00173",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9403,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00183",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0483,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00187",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4906,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00194",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5043,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00201",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4105,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00202",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8302,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00224",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.286,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00230",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8446,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00233",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7223,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00234",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.782,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00236",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6098,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00243",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9621,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00244",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9629,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00246",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8126,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00247",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4663,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00253",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7068,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00254",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4223,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00255",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9173,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00257",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5414,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00260",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6156,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00269",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5791,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00275",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.322,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00280",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8756,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00281",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7581,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00291",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4281,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00299",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7085,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00309",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3428,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00315",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3494,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00318",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7017,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00325",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7762,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00328",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4422,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00337",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6632,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00341",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2402,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00344",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5104,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00349",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6937,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00350",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8375,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00356",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4633,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00362",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.932,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00369",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2683,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00375",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8551,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00378",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6223,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00383",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8925,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00384",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9257,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00385",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.354,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00386",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5192,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00387",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3873,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00391",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6823,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00398",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9666,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00399",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2813,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00401",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6243,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00402",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7248,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00404",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9172,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00409",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1881,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00414",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8788,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00415",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.0872,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00423",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.143,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00424",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6271,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00427",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8075,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00429",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9741,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00437",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0927,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00438",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3155,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00441",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5098,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00445",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3916,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00454",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6271,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00455",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8364,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00457",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1405,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00459",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0816,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00461",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9386,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00462",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7118,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00464",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4836,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00469",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6239,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00478",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.209,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00490",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8883,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00521",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2076,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00522",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.055,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00525",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7165,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00529",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7614,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00531",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7746,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00534",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.2104,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00539",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8709,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00544",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4651,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00546",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0285,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00562",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1406,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00570",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1258,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00581",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.893,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00597",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.0537,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00599",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.82,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00601",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5379,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00602",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9095,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00607",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6682,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00614",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5961,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00616",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8008,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00617",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3208,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00619",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8747,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00625",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6517,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00630",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.492,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00631",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4778,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00670",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.294,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00674",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7355,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00682",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5836,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00689",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.018,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00690",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4695,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00696",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5835,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00702",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9178,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00704",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4453,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00713",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9061,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00714",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7014,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00721",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5398,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00724",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8369,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00731",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8485,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00732",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9409,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00737",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6296,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00738",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8833,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00741",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5046,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00745",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0679,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00747",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7353,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00749",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8468,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00753",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7675,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00754",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7492,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00771",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.403,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00776",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4282,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00779",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6682,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00785",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6084,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00790",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5239,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00792",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9861,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00793",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9933,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00796",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4994,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00798",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7618,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00799",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8048,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00823",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8971,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00824",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4796,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00834",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4947,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00836",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9814,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00839",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7947,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00849",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4716,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00855",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6048,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00860",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8547,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00869",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.4078,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00886",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9552,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00888",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7221,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00889",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9305,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00897",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9675,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00900",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5422,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00904",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9805,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00924",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7223,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00927",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.4269,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00930",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.4061,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00936",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5027,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00938",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0906,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-00945",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7788,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00947",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9055,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00951",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4741,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00953",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2884,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00964",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9627,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00976",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8366,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00977",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6871,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00980",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6834,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00982",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4075,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-00983",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8504,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-00997",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6617,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01002",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2828,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01009",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4948,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01010",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3349,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01011",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9987,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01012",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6768,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01013",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5022,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01022",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5601,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01027",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1189,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01035",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5084,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01038",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0169,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01042",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1651,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01043",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.568,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01048",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1672,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01054",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3636,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01055",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6462,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01064",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8171,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01075",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8811,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01076",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4881,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01088",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.279,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01089",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7751,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01097",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8709,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01099",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2993,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01114",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5471,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01129",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3793,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01138",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4441,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01143",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9694,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01144",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7853,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01147",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.609,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01149",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9635,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01155",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9692,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01165",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6772,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01174",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9706,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01185",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4534,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01186",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5361,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01195",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.87,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01197",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7392,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01200",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0213,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01201",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9939,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01209",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8722,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01210",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7779,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01215",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6341,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01218",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4687,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01222",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6194,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01224",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5773,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01225",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8222,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01234",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.085,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01236",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9001,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01246",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9849,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01250",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8111,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01251",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9378,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01258",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8232,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01265",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5197,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01266",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6719,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01288",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9405,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01294",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9895,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01296",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0664,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01302",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6661,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01308",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7147,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01309",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8004,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01311",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7263,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01315",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8419,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01322",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7936,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01326",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.696,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01330",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9021,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01331",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4602,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01336",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8048,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01344",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.488,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01358",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4205,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01360",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6749,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01376",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.837,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01377",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4095,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01384",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5523,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01391",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5732,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01392",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.247,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01394",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3965,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01396",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3866,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01402",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9235,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01405",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5696,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01407",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7988,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01410",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9711,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01423",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4287,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01439",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9398,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01449",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6451,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01453",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9924,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01464",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3083,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01474",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4147,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01481",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9094,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01484",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9547,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01490",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.394,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01491",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.941,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01493",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8945,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01499",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5768,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01510",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1427,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01516",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6351,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01517",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9483,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01521",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.747,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01524",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2012,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01525",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0616,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01530",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9798,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01544",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9411,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01546",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9894,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01549",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.857,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01553",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.2975,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01554",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5086,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01560",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9921,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01565",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8826,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01567",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5671,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01568",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9413,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01570",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9978,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01572",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.0991,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01574",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4527,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01577",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9668,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01583",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9394,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01585",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4988,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01586",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6336,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01589",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8014,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01592",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8408,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01593",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7373,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01595",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.293,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01602",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8687,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01615",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9726,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01617",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3447,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01625",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4905,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01628",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.699,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01631",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3556,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01635",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9954,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01637",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0659,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01638",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7631,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01639",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4641,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01644",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8456,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01659",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4824,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01663",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2622,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01664",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6373,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01666",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4734,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01673",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7786,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01674",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1198,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01679",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6598,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01681",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2582,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01683",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.394,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01689",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1698,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01692",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.207,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01701",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.139,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01709",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6638,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01713",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9046,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01716",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5731,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01729",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8837,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01733",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4527,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01734",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9878,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01738",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5885,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01743",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6364,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01761",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2886,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01768",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7793,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01776",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8786,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01778",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8382,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01779",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.886,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01787",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6099,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01793",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4007,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01807",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7784,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01808",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.375,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01819",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6117,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01822",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.04,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01829",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8845,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01833",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6096,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01834",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8063,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01839",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8742,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01841",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8279,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01842",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5366,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01866",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5469,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01868",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9633,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01881",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4709,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01886",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4162,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01887",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1252,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01894",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4676,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01899",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.626,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01902",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3688,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01922",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8452,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01925",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4496,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01930",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7017,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01931",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8937,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01932",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8359,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01933",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5315,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01939",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.877,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01952",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9211,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01960",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3918,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01962",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5253,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-01978",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9731,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01980",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1962,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01982",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1077,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01983",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8694,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01985",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2608,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-01990",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7644,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-01997",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9245,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02004",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6697,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02005",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.406,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02006",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0614,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02012",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5437,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02018",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1125,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02019",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9642,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02020",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9277,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02026",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4494,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02029",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3347,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02030",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3088,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02038",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6993,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02040",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1848,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02043",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8931,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02044",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9444,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02045",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.919,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02050",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.09,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02053",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9463,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02056",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9587,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02061",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7029,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02062",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6242,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02078",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3117,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02093",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1334,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02110",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8174,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02113",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4869,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02115",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1654,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02119",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.82,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02121",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3856,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02127",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8424,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02129",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.153,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02130",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1095,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02136",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7393,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02138",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7987,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02145",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3164,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02148",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9597,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02150",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6666,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02154",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3096,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02155",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4985,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02163",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6124,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02173",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5885,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02176",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9041,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02181",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6678,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02183",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6201,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02184",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.374,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02185",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6618,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02192",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5839,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02196",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8877,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02198",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1688,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02199",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9333,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02201",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8015,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02214",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4742,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02218",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4113,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02223",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5445,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02224",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5223,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02227",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3637,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02229",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5443,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02232",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5495,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02243",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.532,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02253",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5375,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02263",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8773,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02271",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2469,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02274",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3651,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02275",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5168,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02281",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0913,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02286",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5753,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02287",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3826,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02295",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4048,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02296",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8562,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02305",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.919,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02311",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9404,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02316",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1242,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02318",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.545,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02326",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8969,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02330",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8788,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02336",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1338,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02338",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.538,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02342",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3542,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02365",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2383,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02367",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.571,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02372",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8817,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02374",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02375",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3555,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02380",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5411,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02381",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8261,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02388",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.2433,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02392",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.922,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02393",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7762,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02400",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3114,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02406",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5007,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02407",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9125,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02409",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.255,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02410",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0785,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02412",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8584,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02415",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4819,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02419",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0931,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02421",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5043,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02422",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8385,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02428",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4559,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02429",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0841,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02440",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7434,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02444",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.67,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02446",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0994,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02448",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8598,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02454",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7142,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02457",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6021,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02478",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6378,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02480",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7609,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02487",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9776,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02488",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0389,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02490",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5535,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02492",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5633,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02495",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1123,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02502",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8157,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02503",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1837,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02508",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.876,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02510",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7999,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02514",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8836,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02516",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9256,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02517",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9039,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02519",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.4266,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02520",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1751,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02527",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8114,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02534",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7553,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02548",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2655,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02552",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6502,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02553",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0805,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02557",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4945,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02561",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7682,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02577",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8398,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02586",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1941,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02591",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1179,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02604",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3345,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02605",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1687,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02609",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7062,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02610",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8934,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02614",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1296,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02616",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7102,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02617",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0664,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02624",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6937,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02630",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.888,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02640",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9882,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02644",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.666,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02645",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8323,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02646",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5199,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02648",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4677,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02649",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0436,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02652",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5836,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02653",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3539,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02655",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8845,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02677",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3347,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02683",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5784,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02684",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6005,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02686",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9183,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02690",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3066,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02693",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7548,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02696",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9194,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02700",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9511,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02707",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8337,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02708",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2459,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02711",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9333,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02720",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2475,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02723",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9792,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02733",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6917,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02737",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7849,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02738",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4815,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02745",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0416,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02756",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9296,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02761",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9134,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02762",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3823,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02763",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1296,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02769",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5645,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02777",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9606,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02787",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5169,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02804",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8691,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02808",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9609,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02811",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7389,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02820",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1441,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02821",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0638,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02830",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6964,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02842",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4443,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02858",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1394,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02862",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7459,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02864",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9472,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02876",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.279,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02877",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.836,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02878",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9673,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02882",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4176,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02884",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8701,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02886",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.423,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02897",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9597,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02902",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.295,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02903",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4435,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02906",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6899,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02908",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.47,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02915",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4859,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02917",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7625,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02921",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2723,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02936",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8171,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02941",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8898,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02948",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.81,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02950",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2875,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02954",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.979,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02965",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9161,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02968",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5738,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02973",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8517,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02974",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5659,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02976",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8518,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-02980",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6979,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-02992",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0564,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-02996",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9508,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03001",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4174,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03014",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2528,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03028",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4029,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03030",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1095,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03033",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2389,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03038",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6462,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03067",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4418,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03070",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.235,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03071",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.241,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03072",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1279,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03074",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6693,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03080",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.756,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03091",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4788,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03094",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4018,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03101",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4536,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03102",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4651,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03109",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3284,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03112",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6824,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03116",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8028,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03117",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8604,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03123",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8671,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03128",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.841,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03131",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8347,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03134",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3539,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03136",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.363,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03139",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8267,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03140",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3722,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03142",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8582,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03146",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5007,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03148",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9829,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03149",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.732,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03155",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7374,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03157",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9903,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03158",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2932,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03163",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4613,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03168",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.2674,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03170",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7891,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03171",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5647,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03180",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5152,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03183",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9295,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03185",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8648,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03190",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5908,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03198",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3243,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03208",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3987,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03209",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4403,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03210",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9339,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03212",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9389,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03214",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9464,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03220",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0868,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03221",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5509,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03229",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9612,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03237",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4164,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03239",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.488,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03241",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3216,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03248",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6666,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03250",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5024,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03260",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7721,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03262",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6274,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03265",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9017,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03270",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.204,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03271",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4581,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03277",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5885,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03282",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4183,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03289",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3262,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03290",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7402,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03294",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6914,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03297",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9829,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03314",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4956,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03323",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1818,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03326",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1353,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03328",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7546,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03329",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6094,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03342",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2297,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03344",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.485,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03350",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7624,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03357",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6605,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03361",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8655,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03364",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4838,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03369",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4725,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03371",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9369,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03381",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3421,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03391",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3791,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03395",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8166,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03396",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9727,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03398",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8784,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03400",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6876,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03405",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9328,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03409",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9902,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03413",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4886,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03422",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6147,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03425",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5493,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03428",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.637,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03433",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9955,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03439",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9085,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03440",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4255,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03454",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6612,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03455",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3117,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03462",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9452,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03463",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7846,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03464",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5567,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03467",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5107,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03470",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7236,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03471",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5859,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03475",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0174,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03477",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.736,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03478",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.343,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03484",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4696,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03488",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9309,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03491",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8836,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03493",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4943,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03496",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6387,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03497",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7686,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03498",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4065,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03502",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2908,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03507",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5716,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03511",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0709,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03521",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.832,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03522",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6979,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03526",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.441,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03533",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.313,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03538",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4096,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03539",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5929,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03543",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.587,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03544",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8566,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03553",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2443,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03555",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8999,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03563",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8955,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03575",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0943,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03579",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8697,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03580",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8982,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03583",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6713,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03593",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9371,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03594",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8867,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03595",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9967,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03598",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9541,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03600",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1998,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03604",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9193,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03606",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4018,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03607",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0271,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03608",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3332,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03612",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9625,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03614",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7001,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03627",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9786,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03644",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5216,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03648",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9334,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03652",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2554,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03653",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4581,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03656",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9565,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03660",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8876,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03661",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.596,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03665",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8447,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03667",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9467,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03669",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9079,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03682",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5279,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03689",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6403,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03691",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5227,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03701",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6873,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03707",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2513,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03708",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.851,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03709",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4793,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03714",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.622,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03719",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8988,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03722",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9316,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03724",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9979,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03731",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9384,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03735",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4388,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03736",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4413,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03739",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3522,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03743",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8513,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03746",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5463,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03751",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6434,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03757",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9124,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03758",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7419,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03766",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.0712,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03767",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6139,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03772",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9516,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03777",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5905,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03783",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3541,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03794",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.531,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03796",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2222,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03807",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7398,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03809",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9395,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03811",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9708,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03817",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9223,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03822",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.714,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03824",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7461,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03826",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3409,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03829",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9669,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03830",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.195,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03833",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9175,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03840",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4077,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03848",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4107,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03855",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9893,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03864",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1378,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03865",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8072,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03866",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.536,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03873",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9526,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03875",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3849,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03879",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9774,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03880",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1428,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03881",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9165,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03885",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2919,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03887",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5527,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03906",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2819,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03910",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.503,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03928",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3909,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03934",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.869,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03943",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6286,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03948",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6971,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03950",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4917,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03953",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4081,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03955",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4594,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03958",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7446,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03959",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6762,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03961",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4844,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03970",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6809,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03972",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2866,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03976",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7145,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03978",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8568,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03984",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.35,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03985",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6143,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-03986",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8092,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-03987",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1403,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-03989",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0511,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04003",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.981,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04005",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7159,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04006",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8004,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04007",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5632,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04008",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3435,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04014",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2658,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04024",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4199,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04025",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4538,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04028",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5834,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04037",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4591,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04044",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3887,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04048",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8721,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04054",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2596,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04056",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5423,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04059",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1634,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04062",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4736,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04063",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6515,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04065",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3014,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04069",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6648,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04074",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8815,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04085",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8303,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04086",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1003,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04092",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6197,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04094",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4707,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04098",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4739,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04102",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4606,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04113",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8386,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04116",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7631,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04117",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.95,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04119",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4007,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04127",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9985,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04129",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5689,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04133",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9027,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04139",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.0278,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04140",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.295,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04141",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4543,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04146",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9694,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04163",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8491,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04165",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9304,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04181",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7595,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04188",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0625,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04194",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3489,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04207",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8891,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04211",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6275,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04214",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8396,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04218",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1696,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04221",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.925,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04223",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6943,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04225",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5653,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04235",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1158,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04241",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4757,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04246",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.222,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04254",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1516,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04256",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9378,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04262",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4831,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04266",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8439,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04267",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0907,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04274",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6911,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04279",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9192,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04283",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5366,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04284",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1427,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04285",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1562,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04287",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0473,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04290",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.963,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04294",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9321,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04298",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.986,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04300",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7119,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04302",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9891,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04303",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4226,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04305",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6719,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04316",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8718,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04323",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.843,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04333",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0636,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04336",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6428,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04345",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2197,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04346",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5742,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04350",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1256,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04354",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8361,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04356",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6865,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04365",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9014,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04369",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.381,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04372",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9564,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04376",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2988,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04380",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5107,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04382",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1784,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04389",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8186,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04392",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7024,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04399",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.257,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04400",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4512,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04408",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.698,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04412",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9477,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04421",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3834,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04423",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9361,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04424",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4335,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04426",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5126,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04428",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7678,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04444",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9273,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04450",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3863,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04452",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9539,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04456",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1648,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04463",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0684,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04470",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3794,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04475",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9792,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04480",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4561,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04491",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7251,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04492",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2796,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04495",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6599,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04503",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4141,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04504",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9551,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04507",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6327,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04511",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9726,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04512",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4174,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04519",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9097,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04525",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6706,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04532",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5826,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04533",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5028,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04537",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6293,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04544",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5395,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04546",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.522,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04557",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.403,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04558",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4793,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04559",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6925,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04571",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6958,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04572",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.707,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04578",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7387,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04581",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8782,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04584",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9731,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04594",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5671,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04602",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5475,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04613",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7555,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04620",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1283,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04621",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5543,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04629",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0474,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04640",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8314,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04644",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9451,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04647",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7809,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04650",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8681,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04661",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2072,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04664",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8573,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04670",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2873,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04672",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4198,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04680",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8934,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04682",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.473,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04684",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1198,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04685",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4321,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04688",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9171,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04692",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1781,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04699",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.8143,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04704",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8785,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04705",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9724,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04707",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4004,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04713",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7626,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04720",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9404,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04733",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8335,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04734",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4965,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04736",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9702,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04737",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9888,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04741",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2957,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04743",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5357,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04745",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9186,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04762",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3685,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04764",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2401,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04768",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.679,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04776",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7721,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04777",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.597,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04780",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.148,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04782",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3508,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04786",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9405,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04792",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.25,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04799",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9317,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04810",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2536,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04818",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.977,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04820",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1262,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04822",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5039,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04824",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7138,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04831",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2382,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04832",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5345,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04833",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3146,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04838",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5109,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04845",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4554,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04847",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7668,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04848",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.61,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04857",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3048,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04861",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5351,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04862",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.415,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04863",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9951,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04871",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0653,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04878",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7693,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04879",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4477,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04880",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5852,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04890",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.5299,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04892",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3043,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04900",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6773,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04903",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8883,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04905",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2142,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04908",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.2223,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04909",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.502,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04912",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9124,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04916",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4412,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04923",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9145,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04924",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3079,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04925",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1072,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04933",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6643,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04938",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9589,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04947",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5934,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04957",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2382,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04961",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9637,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04963",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8467,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04981",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9156,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04985",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.646,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04987",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.2403,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-04989",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3611,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04990",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9916,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-04997",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.548,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-04998",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7014,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05017",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1181,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05019",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6261,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05020",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9471,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05025",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3652,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05029",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2481,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05030",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9311,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05031",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2697,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05042",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3772,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05043",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8743,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05048",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6876,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05049",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.695,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05051",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7753,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05055",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.3888,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05058",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5553,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05060",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.802,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05086",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6015,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05091",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8972,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05094",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6733,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05114",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7538,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05115",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2541,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05117",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2541,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05118",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.1186,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05119",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9028,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05126",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9213,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05130",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.6486,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05132",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9198,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05147",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.4882,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05148",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.5538,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05176",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9971,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05183",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.9144,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05184",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9189,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05185",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9502,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05188",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9263,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05193",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9587,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05195",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9637,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05199",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7171,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05200",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.4643,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05202",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9575,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05217",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2708,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05229",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "个人攻击",
+      "score": 0.212,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05236",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.3914,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05238",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0951,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05248",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.7987,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05252",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1207,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05267",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.4044,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05275",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9771,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05278",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.6578,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05282",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2992,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05283",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2521,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05291",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.7336,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05296",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.8905,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05298",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.0628,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05300",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.2657,
+      "route": "pass"
+    },
+    {
+      "id": "cold-test-05302",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "其他非冒犯",
+      "score": 0.553,
+      "route": "review"
+    },
+    {
+      "id": "cold-test-05310",
+      "truth": 0,
+      "prediction": 1,
+      "risk": "反偏见表达",
+      "score": 0.9969,
+      "route": "block"
+    },
+    {
+      "id": "cold-test-05321",
+      "truth": 1,
+      "prediction": 0,
+      "risk": "群体攻击",
+      "score": 0.1236,
+      "route": "pass"
+    }
+  ]
+}

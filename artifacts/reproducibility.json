@@ -1,0 +1,21 @@
+{
+  "files": {
+    "predictions.csv": {
+      "before_sha256": "95be16e4ea7fed62914b77c93a6fb16a0aa332bd18a2720c41de8270b1b908cb",
+      "after_sha256": "95be16e4ea7fed62914b77c93a6fb16a0aa332bd18a2720c41de8270b1b908cb",
+      "identical": true
+    },
+    "policy.json": {
+      "before_sha256": "f59a70df839526e2d45728c70c1aecc80d18da27d47dabc3ee220b900e8ca785",
+      "after_sha256": "f59a70df839526e2d45728c70c1aecc80d18da27d47dabc3ee220b900e8ca785",
+      "identical": true
+    },
+    "split_manifest.json": {
+      "before_sha256": "dd82fd5d5813e6a9b9e98179e2be2a80d5c602ffa341a2ee4ac51e6a799f7bb6",
+      "after_sha256": "dd82fd5d5813e6a9b9e98179e2be2a80d5c602ffa341a2ee4ac51e6a799f7bb6",
+      "identical": true
+    }
+  },
+  "comparison": "repeated real runs; same source data, model and policy configuration; final run includes disabled adapter cascade integration",
+  "timing_compared": false
+}

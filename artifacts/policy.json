@@ -1,0 +1,13 @@
+{
+  "version": "cold-offline-v1",
+  "C": 3.0,
+  "binary_threshold": 0.45,
+  "pass_threshold": 0.28,
+  "block_threshold": 0.72,
+  "selection": "validation F1 for binary; max auto coverage at empirical 95% precision per auto action and >=50 validation support; rules prohibit auto-pass",
+  "validation_target": 0.95,
+  "validation_auto_pass_n": 2677,
+  "validation_auto_pass_precision": 0.9514381770638775,
+  "validation_auto_block_n": 2620,
+  "validation_auto_block_precision": 0.95
+}

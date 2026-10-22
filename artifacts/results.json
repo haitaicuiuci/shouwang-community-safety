@@ -1,0 +1,227 @@
+{
+  "dataset": "COLD 中文冒犯评论",
+  "seed": 42,
+  "policy": {
+    "version": "cold-offline-v1",
+    "C": 3.0,
+    "binary_threshold": 0.45,
+    "pass_threshold": 0.28,
+    "block_threshold": 0.72,
+    "selection": "validation F1 for binary; max auto coverage at empirical 95% precision per auto action and >=50 validation support; rules prohibit auto-pass",
+    "validation_target": 0.95,
+    "validation_auto_pass_n": 2677,
+    "validation_auto_pass_precision": 0.9514381770638775,
+    "validation_auto_block_n": 2620,
+    "validation_auto_block_precision": 0.95
+  },
+  "quality": {
+    "fine_binary_mismatches": 0,
+    "missing_topic_rows": 0,
+    "text_length_quantiles": {
+      "0": 3.0,
+      "50": 40.0,
+      "95": 110.0,
+      "100": 192.0
+    },
+    "raw_counts": {
+      "train": 25726,
+      "validation": 6431,
+      "test": 5323
+    },
+    "raw_total": 37480,
+    "retained_total": 37245,
+    "retained_counts": {
+      "test": 5311,
+      "validation": 6405,
+      "train": 25529
+    },
+    "invalid_rows": 0,
+    "conflict_groups": 29,
+    "duplicate_rows": 177,
+    "cross_split_groups_before": 105,
+    "cross_split_groups_after": 0,
+    "labels": {
+      "test": {
+        "1": 2105,
+        "0": 3206
+      },
+      "validation": {
+        "1": 3194,
+        "0": 3211
+      },
+      "train": {
+        "1": 12583,
+        "0": 12946
+      }
+    },
+    "normalization": "NFKC+lower+alphanumeric only; test > validation > train; conflicting binary groups removed",
+    "semantic_dedup": false
+  },
+  "metrics": {
+    "rules": {
+      "n": 5311,
+      "precision": 0.8461538461538461,
+      "recall": 0.031353919239904986,
+      "f1": 0.060467246907924876,
+      "tn": 3194,
+      "fp": 12,
+      "fn": 2039,
+      "tp": 66,
+      "false_positive_rate": 0.0037429819089207735,
+      "false_negative_rate": 0.9686460807600951
+    },
+    "lightweight": {
+      "n": 5311,
+      "precision": 0.7036595067621321,
+      "recall": 0.8403800475059382,
+      "f1": 0.7659666594500975,
+      "tn": 2461,
+      "fp": 745,
+      "fn": 336,
+      "tp": 1769,
+      "false_positive_rate": 0.2323767935121647,
+      "false_negative_rate": 0.15961995249406175
+    },
+    "cascade_auto_only": {
+      "n": 4145,
+      "precision": 0.7711306256860593,
+      "recall": 0.8926302414231257,
+      "f1": 0.8274440518256773,
+      "tn": 2154,
+      "fp": 417,
+      "fn": 169,
+      "tp": 1405,
+      "false_positive_rate": 0.16219369894982497,
+      "false_negative_rate": 0.10736975857687421
+    }
+  },
+  "routing": {
+    "n": 5311,
+    "counts": {
+      "review": 1166,
+      "block": 1822,
+      "pass": 2323
+    },
+    "rates": {
+      "pass": 0.4373940877424214,
+      "block": 0.34306157032573903,
+      "review": 0.21954434193183958
+    },
+    "auto_coverage": 0.7804556580681604,
+    "auto_pass_offensive": 169,
+    "auto_block_safe": 417,
+    "pass_contamination": 0.07275075333620319,
+    "block_precision": 0.7711306256860593,
+    "leakage_over_all_offensive": 0.08028503562945369,
+    "false_block_over_all_safe": 0.1300686213349969,
+    "human_completed": 0,
+    "actual_llm_calls": 0,
+    "candidate_llm_requests": 1166,
+    "final_end_to_end_quality": null,
+    "release_gate": "BLOCKED: test block precision below validation target; offline demo only"
+  },
+  "risk_metrics": [
+    {
+      "n": 288,
+      "precision": null,
+      "recall": 0.8159722222222222,
+      "f1": null,
+      "tn": 0,
+      "fp": 0,
+      "fn": 53,
+      "tp": 235,
+      "false_positive_rate": null,
+      "false_negative_rate": 0.1840277777777778,
+      "risk": "个人攻击",
+      "cascade_pass_offensive": 28,
+      "cascade_block_safe": 0,
+      "review": 61
+    },
+    {
+      "n": 2545,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "tn": 2212,
+      "fp": 333,
+      "fn": 0,
+      "tp": 0,
+      "false_positive_rate": 0.13084479371316307,
+      "false_negative_rate": null,
+      "risk": "其他非冒犯",
+      "cascade_pass_offensive": 0,
+      "cascade_block_safe": 128,
+      "review": 441
+    },
+    {
+      "n": 661,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "tn": 249,
+      "fp": 412,
+      "fn": 0,
+      "tp": 0,
+      "false_positive_rate": 0.6232980332829047,
+      "false_negative_rate": null,
+      "risk": "反偏见表达",
+      "cascade_pass_offensive": 0,
+      "cascade_block_safe": 289,
+      "review": 194
+    },
+    {
+      "n": 1817,
+      "precision": null,
+      "recall": 0.8442487616951018,
+      "f1": null,
+      "tn": 0,
+      "fp": 0,
+      "fn": 283,
+      "tp": 1534,
+      "false_positive_rate": null,
+      "false_negative_rate": 0.15575123830489818,
+      "risk": "群体攻击",
+      "cascade_pass_offensive": 141,
+      "cascade_block_safe": 0,
+      "review": 470
+    }
+  ],
+  "latency": {
+    "method": "200 sequential single-item warm calls; vectorize + classifier + rules + route; perf_counter; one CPU thread; excludes startup, DB, network, human",
+    "n": 200,
+    "p50_ms": 0.4393125418573618,
+    "p95_ms": 1.0612522833980609,
+    "batch_total_ms": 615.6369168311357,
+    "batch_amortized_ms": 0.115917325707237,
+    "actual_llm_latency_ms": null,
+    "actual_end_to_end_latency_ms": null
+  },
+  "lightweight_f1_bootstrap95": [
+    0.7547607138938283,
+    0.7780215385631508
+  ],
+  "cost": {
+    "actual_api_spend": 0,
+    "estimated_scenario_spend": 0.8162,
+    "assumptions": {
+      "input_tokens": 300,
+      "output_tokens": 100,
+      "input_price_per_million": 1.0,
+      "output_price_per_million": 4.0,
+      "currency": "CNY",
+      "note": "仅情景假设，非供应商报价；没有API调用"
+    },
+    "formula": "candidate_requests * (input_tokens * input_price + output_tokens * output_price) / 1e6"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "sklearn": "1.6.1",
+    "numpy": "2.2.6",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "cpu_count": 6,
+    "cpu_threads_used": 1
+  },
+  "duration_seconds": 15.456239207880571
+}

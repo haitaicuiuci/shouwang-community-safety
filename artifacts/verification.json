@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-21",
+  "unit_tests": {
+    "passed": 13,
+    "failed": 0,
+    "log": "verification-tests.txt"
+  },
+  "repeated_predictions_policy_split": "byte-identical SHA-256",
+  "javascript_syntax_check": "passed",
+  "browser_checks": {
+    "overview_real_metrics": "passed",
+    "risk_slices": "passed",
+    "error_pagination_page_1_to_2": "passed",
+    "queue_1166_completed_0": "passed",
+    "cost_input_1_to_2_result_0.8162_to_1.1660": "passed",
+    "screenshot": "dashboard-preview.png"
+  },
+  "http_checks": "http_verification.json",
+  "standalone_file_navigation": "not tested in embedded browser: file protocol blocked; HTTP rendering tested",
+  "responsive_mobile": "CSS breakpoints implemented; mobile viewport not visually tested",
+  "actual_human_reviews": 0,
+  "actual_llm_calls": 0,
+  "preview_server": "stopped after verification; use run.sh serve"
+}

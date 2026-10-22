@@ -1,0 +1,8 @@
+Community Safety Portfolio — independent educational/offline research project, 2026.
+New code and documentation are offered under Apache License 2.0.
+COLDataset: Deng et al., COLD: A Benchmark for Chinese Offensive Language Detection, EMNLP 2022.
+Official source: https://github.com/thu-coai/COLDataset
+Pinned commit: a0c55a945497ab58e94aef491180e1cf88ffb864
+Upstream repository LICENSE and README are preserved in data/raw/.
+Modifications: normalization-based deduplication, conflicting-label exclusion, SQL schema, features, model training and evaluation, routing, dashboard and documentation.
+No affiliation with Kuaishou; no private enterprise data or production outcomes claimed.

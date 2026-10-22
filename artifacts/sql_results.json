@@ -1,0 +1,188 @@
+{
+  "split_distribution": [
+    {
+      "split": "test",
+      "source_label": 0,
+      "n": 3206
+    },
+    {
+      "split": "test",
+      "source_label": 1,
+      "n": 2105
+    },
+    {
+      "split": "train",
+      "source_label": 0,
+      "n": 12946
+    },
+    {
+      "split": "train",
+      "source_label": 1,
+      "n": 12583
+    },
+    {
+      "split": "validation",
+      "source_label": 0,
+      "n": 3211
+    },
+    {
+      "split": "validation",
+      "source_label": 1,
+      "n": 3194
+    }
+  ],
+  "quality_exclusions": [
+    {
+      "reason": "conflicting_label",
+      "n": 58
+    },
+    {
+      "reason": "normalized_duplicate",
+      "n": 177
+    }
+  ],
+  "confusion_matrix": [
+    {
+      "strategy": "lightweight",
+      "truth": 0,
+      "prediction": 0,
+      "n": 2461
+    },
+    {
+      "strategy": "lightweight",
+      "truth": 0,
+      "prediction": 1,
+      "n": 745
+    },
+    {
+      "strategy": "lightweight",
+      "truth": 1,
+      "prediction": 0,
+      "n": 336
+    },
+    {
+      "strategy": "lightweight",
+      "truth": 1,
+      "prediction": 1,
+      "n": 1769
+    },
+    {
+      "strategy": "rules",
+      "truth": 0,
+      "prediction": 0,
+      "n": 3194
+    },
+    {
+      "strategy": "rules",
+      "truth": 0,
+      "prediction": 1,
+      "n": 12
+    },
+    {
+      "strategy": "rules",
+      "truth": 1,
+      "prediction": 0,
+      "n": 2039
+    },
+    {
+      "strategy": "rules",
+      "truth": 1,
+      "prediction": 1,
+      "n": 66
+    }
+  ],
+  "route_coverage": [
+    {
+      "decision": "block",
+      "n": 1822,
+      "share_of_all_test": 0.343062
+    },
+    {
+      "decision": "pass",
+      "n": 2323,
+      "share_of_all_test": 0.437394
+    },
+    {
+      "decision": "review",
+      "n": 1166,
+      "share_of_all_test": 0.219544
+    }
+  ],
+  "risk_errors": [
+    {
+      "policy_risk": "个人攻击",
+      "n": 288,
+      "fn": 53,
+      "fp": 0
+    },
+    {
+      "policy_risk": "其他非冒犯",
+      "n": 2545,
+      "fn": 0,
+      "fp": 333
+    },
+    {
+      "policy_risk": "反偏见表达",
+      "n": 661,
+      "fn": 0,
+      "fp": 412
+    },
+    {
+      "policy_risk": "群体攻击",
+      "n": 1817,
+      "fn": 283,
+      "fp": 0
+    }
+  ],
+  "route_errors": [
+    {
+      "decision": "block",
+      "n": 1822,
+      "labeled_offensive": 1405,
+      "labeled_safe": 417
+    },
+    {
+      "decision": "pass",
+      "n": 2323,
+      "labeled_offensive": 169,
+      "labeled_safe": 2154
+    },
+    {
+      "decision": "review",
+      "n": 1166,
+      "labeled_offensive": 531,
+      "labeled_safe": 635
+    }
+  ],
+  "queue_workload": [
+    {
+      "reason": "rule_conflict",
+      "pending": 6
+    },
+    {
+      "reason": "uncertain",
+      "pending": 1160
+    }
+  ],
+  "cross_split_leakage": [],
+  "topic_errors": [
+    {
+      "topic": "gender",
+      "n": 1548,
+      "fn": 77,
+      "fp": 207
+    },
+    {
+      "topic": "race",
+      "n": 1685,
+      "fn": 102,
+      "fp": 255
+    },
+    {
+      "topic": "region",
+      "n": 2078,
+      "fn": 157,
+      "fp": 283
+    }
+  ]
+}

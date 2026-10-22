@@ -1,0 +1,22 @@
+{
+  "files": {
+    "src/package.py": "1f712864d94ebcfb710bfee0dd1e8620b5ce1883a1910b6af49f937d42ac0451",
+    "src/adapter.py": "404dacdb9eab32666de147b3ce1b9c0fb31d19a2007bbf9b9f9d96495cf0fb0f",
+    "src/download.py": "84bc4a592078f2bb2e34fee18511946a7c4b4be73f1eeb1591061ad13bc3924e",
+    "src/serve.py": "6914f752786673e7a9bfc99c030a5ccddc2563485f36675d506dd1687d363147",
+    "src/common.py": "9790886375eecb26fabc37f1d964da1b05813f6f1a24ab3effa0c892aad9eb47",
+    "src/pipeline.py": "63e2f6ec7ccd970535402d8c4467d0da08e8d5ac6c96b60303627a22567402fc",
+    "src/report.py": "d4664ebd30da616219105886a38f189d88b8a9dd9d49840f0c70789bdb3cac98",
+    "src/cascade.py": "b58dd436eef9d93c4504ad06d0db3893604367d68b39aaa5c9629998c08e6e87",
+    "config/experiment.json": "d9c623eeedcb654ca99be3897eb49b1438430cbe6092effee724d3c76aebf03e",
+    "requirements.txt": "47415ade136f23dd9c8d8a878c222b238930e15f25837aa89a0d956e3f3d5316",
+    "data/source_manifest.json": "a94c82a2dca0914636cbff8bc584e0f48806a2fc8016e1ecb367bf2af40eeb69",
+    "artifacts/model.joblib": "8858200f7d44fe33093612e99eff5a6d35afc693314c3c223dcb2f25931169af",
+    "artifacts/predictions.csv": "95be16e4ea7fed62914b77c93a6fb16a0aa332bd18a2720c41de8270b1b908cb",
+    "artifacts/split_manifest.json": "dd82fd5d5813e6a9b9e98179e2be2a80d5c602ffa341a2ee4ac51e6a799f7bb6",
+    "artifacts/results.json": "b6b81a1353839927c8319e0f4f8b70201481a40bc9fdcacd2d5c0921f6cb72ab",
+    "artifacts/policy.json": "f59a70df839526e2d45728c70c1aecc80d18da27d47dabc3ee220b900e8ca785",
+    "artifacts/validation_search.json": "7e9ac64d5dbb33cb3837ea326ede158e734d868e9dc94ce16966dcd8dca80e9a"
+  },
+  "note": "Hashes tie source/config/data/model/predictions to this run; operations DB excluded because human activity is mutable."
+}
